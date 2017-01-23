@@ -1,0 +1,24 @@
+{
+    "name": "simple-yii2/sitemap",
+    "description": "Sitemap module for Yii 2 framework",
+    "type": "yii2-module",
+    "keywords": ["yii2","module","sitemap"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Dmitry Khlystov",
+            "email": "dkhlystov@gmail.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "creocoder/yii2-nested-sets": "0.9.*",
+        "dkhlystov/yii2-treegrid": "*",
+        "simple-yii2/cms": "1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "cms\\sitemap\\": ""
+        }
+    }
+}
