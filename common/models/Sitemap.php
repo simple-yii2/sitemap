@@ -20,9 +20,12 @@ class Sitemap extends ActiveRecord
 	 * @param ActiveRecord $owner 
 	 * @return void
 	 */
-	public function setOwner($owner)
+	public function setOwner($owner, $key)
 	{
-		$this->owner = self::generateOwnerString($owner);
+		if ($key === null)
+			$key = self::generateOwnerString($owner);
+
+		$this->ownerKey = $key;
 	}
 
 	/**
@@ -30,9 +33,12 @@ class Sitemap extends ActiveRecord
 	 * @param ActiveRecord $owner 
 	 * @return static|null
 	 */
-	public static function findByOwner($owner)
+	public static function findByOwner($owner, $key)
 	{
-		return static::findOne(['owner' => self::generateOwnerString($owner)]);
+		if ($key === null)
+			$key = self::generateOwnerString($owner);
+
+		return static::findOne(['ownerKey' => $key]);
 	}
 
 	/**

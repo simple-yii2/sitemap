@@ -53,6 +53,11 @@ class SitemapBehavior extends Behavior
 	public $active;
 
 	/**
+	 * @var string|null owner key. If null, it will be generated with class name and primary key of model.
+	 */
+	public $key;
+
+	/**
 	 * @inheritdoc
 	 */
 	public function init()
@@ -115,11 +120,12 @@ class SitemapBehavior extends Behavior
 	private function sitemapSave()
 	{
 		$owner = $this->owner;
+		$key = $this->key;
 
-		$model = Sitemap::findByOwner($owner);
+		$model = Sitemap::findByOwner($owner, $key);
 		if ($model === null) {
 			$model = new Sitemap;
-			$model->setOwner($owner);
+			$model->setOwner($owner, $key);
 		}
 
 		if ($this->loc instanceof Closure) {
@@ -157,7 +163,7 @@ class SitemapBehavior extends Behavior
 	 */
 	private function sitemapDelete()
 	{
-		$model = Sitemap::findByOwner($this->owner);
+		$model = Sitemap::findByOwner($this->owner, $this->key);
 
 		if ($model !== null)
 			$model->delete();
