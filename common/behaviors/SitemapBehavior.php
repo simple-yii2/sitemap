@@ -133,7 +133,7 @@ class SitemapBehavior extends Behavior
 		} elseif ($this->lastmod !== null) {
 			$model->lastmod = $owner->{$this->lastmod};
 		} else {
-			$model->lastmod = date('c');
+			$model->lastmod = date(DATE_W3C);
 		}
 
 		if ($this->changefreq instanceof Closure) {
