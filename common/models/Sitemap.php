@@ -12,7 +12,7 @@ class Sitemap extends ActiveRecord
 	 */
 	public static function tableName()
 	{
-		return 'Sitemap';
+		return 'sitemap';
 	}
 
 	/**

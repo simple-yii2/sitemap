@@ -1,4 +1,4 @@
-create table if not exists `Sitemap`
+create table if not exists `sitemap`
 (
 	`id` int(10) not null auto_increment,
 	`ownerKey` varchar(200) not null,
